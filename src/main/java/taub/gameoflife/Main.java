@@ -18,6 +18,7 @@ public class Main
 
             GameOfLife game = new GameOfLife(gameBoard);
             game.nextGeneration();
+            game.nextGeneration();
 
 
 

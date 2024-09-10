@@ -22,10 +22,13 @@ public class GameOfLife
         }
     }
 
-
-    public int[][] getOrigGameBoard()
+    private void setOrigGameBoard()
     {
-        return origGameBoard;
+        origGameBoard = new int[newGameBoard.length][newGameBoard[0].length];
+        for (int i = 0; i < newGameBoard.length; i++)
+        {
+            origGameBoard[i] = newGameBoard[i].clone();
+        }
     }
 
     public void nextGeneration()
@@ -34,18 +37,18 @@ public class GameOfLife
         {
             for (int col = 0; col < origGameBoard[row].length; col++)
             {
-              //  determineLiveOrDead(new GOLBox(this, row, col));
                 determineLiveOrDead(row, col);
             }
         }
+        setOrigGameBoard();
         System.out.println(this);
     }
 
    private void determineLiveOrDead(int row, int col)
    {
-       int neighbors = isAlive(row-1, col-1) + isAlive(row-1,col) + isAlive(row-1, col+1)
-                        + isAlive(row, col-1) + isAlive(row, col+1)
-                        + isAlive(row+1, col-1) + isAlive(row+1, col) + isAlive(row+1, col+1);
+       int neighbors = isAlive(row - 1, col - 1) + isAlive(row - 1, col) + isAlive(row - 1, col + 1)
+                        + isAlive(row, col - 1) + isAlive(row, col + 1)
+                        + isAlive(row + 1, col - 1) + isAlive(row + 1, col) + isAlive(row + 1, col + 1);
        if (neighbors == 3)
        {
            newGameBoard[row][col] = 1;
