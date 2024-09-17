@@ -11,10 +11,11 @@ public class GameOfLifeGrid extends JComponent
     {
         game = new GameOfLife(rows, cols);
     }
+
     @Override
     public void paintComponent(Graphics g)
     {
-        Graphics2D g2 = (Graphics2D)g;
+        Graphics2D g2 = (Graphics2D) g;
         Color lightMagenta = new Color(255, 0, 255, 25);
         Color darkMagenta = new Color(255, 0, 255, 200);
 

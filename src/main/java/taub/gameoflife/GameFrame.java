@@ -16,14 +16,14 @@ public class GameFrame extends JFrame
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         int rows = 25;
         int cols = 53;
-        GameOfLifeGrid grid = new GameOfLifeGrid(rows, cols);
-        JPanel buttonPanel = new JPanel();
 
+        JPanel buttonPanel = new JPanel();
         JButton playButton = new JButton("Play");
         buttonPanel.add(playButton);
         playButton.setPreferredSize(new Dimension(100, 100));
 
         setLayout(new BorderLayout());
+        GameOfLifeGrid grid = new GameOfLifeGrid(rows, cols);
         add(grid);
         add(buttonPanel, BorderLayout.SOUTH);
 
