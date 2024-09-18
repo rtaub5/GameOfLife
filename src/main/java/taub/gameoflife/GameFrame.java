@@ -2,10 +2,13 @@ package taub.gameoflife;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 public class GameFrame extends JFrame
 {
+
 
     public GameFrame()
     {
@@ -28,6 +31,18 @@ public class GameFrame extends JFrame
         grid.changeField(18, 4);
         grid.changeField(18, 5);
         grid.changeField(18, 6);
+
+
+        // setup actions
+        playButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                grid.game.nextGeneration();
+                grid.repaint();
+            }
+        });
 
     }
 
