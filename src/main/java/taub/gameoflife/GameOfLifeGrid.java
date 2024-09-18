@@ -19,9 +19,7 @@ public class GameOfLifeGrid extends JComponent
         Color lightMagenta = new Color(255, 0, 255, 25);
         Color darkMagenta = new Color(255, 0, 255, 200);
 
-        g2.setColor(lightMagenta);
         g2.setStroke(new BasicStroke(2));
-
         int unitMeasure = 25;
         int startY = 55;
 
@@ -30,14 +28,18 @@ public class GameOfLifeGrid extends JComponent
             int startX = 65;
             for (int column = 0; column < game.getColumns(); column++)
             {
-                g2.setColor(lightMagenta);
+
                 if (game.getOrigGameBoard()[row / unitMeasure][column] == 1)
                 {
                     g2.setColor(darkMagenta);
                 }
-                g2.drawRect(startX, startY, unitMeasure, unitMeasure);
+                else
+                {
+                    g2.setColor(lightMagenta);
+                }
+               // g2.drawRect(startX, startY, unitMeasure, unitMeasure);
                 g2.fillRect(startX, startY, unitMeasure, unitMeasure);
-                startX += 25;
+                startX = startX + 25;
             }
              startY = startY + unitMeasure;
         }
