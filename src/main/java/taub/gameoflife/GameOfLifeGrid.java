@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class GameOfLifeGrid extends JComponent
 {
-    GameOfLife game;
+    private GameOfLife game;
 
     public GameOfLifeGrid(int rows, int cols)
     {
@@ -15,6 +15,8 @@ public class GameOfLifeGrid extends JComponent
     @Override
     public void paintComponent(Graphics g)
     {
+        game.nextGeneration();
+
         Graphics2D g2 = (Graphics2D) g;
         Color lightMagenta = new Color(255, 0, 255, 25);
         Color darkMagenta = new Color(255, 0, 255, 200);

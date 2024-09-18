@@ -16,7 +16,6 @@ public class GameFrame extends JFrame
         @Override
         public void actionPerformed(ActionEvent e)
         {
-            grid.game.nextGeneration();
             grid.repaint();
         }
     });
