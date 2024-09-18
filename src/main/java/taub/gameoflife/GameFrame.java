@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class GameFrame extends JFrame
 {
-    boolean running = true;
+
     public GameFrame()
     {
         setSize(80, 400);

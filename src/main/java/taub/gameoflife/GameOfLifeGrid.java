@@ -32,8 +32,7 @@ public class GameOfLifeGrid extends JComponent
                 if (game.getOrigGameBoard()[row / unitMeasure][column] == 1)
                 {
                     g2.setColor(darkMagenta);
-                }
-                else {
+                } else {
                     g2.setColor(lightMagenta);
                 }
                 g2.fillRect(startX, startY, unitMeasure, unitMeasure);
