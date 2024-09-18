@@ -20,6 +20,6 @@ specific pattern of live cells. <br/>
 For this app, just press play to generate 
 the next round of live cells.
 
-![GameOfLife](GridWithLines.png)
+![GameOfLife](GridWithoutLines.png)
 
 

@@ -33,11 +33,9 @@ public class GameOfLifeGrid extends JComponent
                 {
                     g2.setColor(darkMagenta);
                 }
-                else
-                {
+                else {
                     g2.setColor(lightMagenta);
                 }
-               // g2.drawRect(startX, startY, unitMeasure, unitMeasure);
                 g2.fillRect(startX, startY, unitMeasure, unitMeasure);
                 startX = startX + 25;
             }
