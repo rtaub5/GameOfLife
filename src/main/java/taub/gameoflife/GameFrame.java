@@ -19,6 +19,7 @@ public class GameFrame extends JFrame
             grid.repaint();
         }
     });
+
     public GameFrame()
     {
         setSize(80, 400);
