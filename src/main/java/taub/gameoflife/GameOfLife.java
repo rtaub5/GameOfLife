@@ -6,11 +6,44 @@ public class GameOfLife
 {
     private int[][] origGameBoard;
     private int[][] newGameBoard;
+    private int rows;
+    private int columns;
 
     public GameOfLife(int[][] board)
     {
         origGameBoard = board;
         setNewGameBoard();
+    }
+
+    public GameOfLife(int rows, int cols)
+    {
+        origGameBoard = new int[rows][cols];
+        this.rows = rows;
+        this.columns = cols;
+        setNewGameBoard();
+    }
+
+    public int getRows()
+    {
+        return rows;
+    }
+
+    public int getColumns()
+    {
+        return columns;
+    }
+
+    public int[][] getOrigGameBoard()
+    {
+        return origGameBoard;
+    }
+
+
+
+    public void setOrigBoardFieldLive(int row, int col)
+    {
+         origGameBoard[row][col] = 1;
+         newGameBoard[row][col] = 1;
     }
 
     private void setNewGameBoard()
@@ -41,7 +74,6 @@ public class GameOfLife
             }
         }
         setOrigGameBoard();
-        System.out.println(this);
     }
 
    private void determineLiveOrDead(int row, int col)
