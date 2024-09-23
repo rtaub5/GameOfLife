@@ -15,8 +15,6 @@ public class GameOfLifeGrid extends JComponent
     @Override
     public void paintComponent(Graphics g)
     {
-        game.nextGeneration();
-
         Graphics2D g2 = (Graphics2D) g;
         Color lightMagenta = new Color(255, 0, 255, 25);
         Color darkMagenta = new Color(255, 0, 255, 200);
@@ -49,6 +47,12 @@ public class GameOfLifeGrid extends JComponent
     public void changeField(int row, int col)
     {
         game.setOrigBoardFieldLive(row, col);
+    }
+
+
+    public void nextGeneration()
+    {
+        game.nextGeneration();
     }
 
 
