@@ -11,7 +11,8 @@ import java.nio.file.Paths;
 
 public class GameFrame extends JFrame
 {
-    int rows = 25;
+   // int rows = 25;
+    int rows = 40;
     int cols = 53;
     GameOfLifeGrid grid = new GameOfLifeGrid(rows, cols);
     Timer timer = new Timer(1000, new ActionListener()
@@ -43,10 +44,12 @@ public class GameFrame extends JFrame
 
         try
         {
-            Path p = Paths.get(ClassLoader.getSystemResource("glider.rle").toURI());
-            File file = new File(String.valueOf(p));
+            Path p = Paths.get(ClassLoader.getSystemResource("gosperglidergun.rle").toURI());
+                // code for glider Path p = Paths.get(ClassLoader.getSystemResource("glider.rle").toURI());
+            File file = p.toFile();
             RleReader reader = new RleReader(file, grid);
-            grid = reader.getFileArr();
+            reader.readRleFile();
+
             add(grid);
             // setup actions
             playButton.addActionListener(new ActionListener()
