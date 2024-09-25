@@ -5,9 +5,9 @@ import java.io.*;
 
 public class RleReader
 {
-    File file;
-    BufferedReader reader;
-    GameOfLifeGrid grid;
+    private File file;
+    private BufferedReader reader;
+    private GameOfLifeGrid grid;
     private int row = 1;
     private int col = 1;
 

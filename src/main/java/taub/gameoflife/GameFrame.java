@@ -43,8 +43,9 @@ public class GameFrame extends JFrame
 
         try
         {
-            Path p = Paths.get(ClassLoader.getSystemResource("gosperglidergun.rle").toURI());
-            // code for glider Path p = Paths.get(ClassLoader.getSystemResource("glider.rle").toURI());
+            //Path p = Paths.get(ClassLoader.getSystemResource("gosperglidergun.rle").toURI());
+            // code for glider
+            Path p = Paths.get(ClassLoader.getSystemResource("glider.rle").toURI());
             File file = p.toFile();
             RleReader reader = new RleReader(file, grid);
             reader.readRleFile();

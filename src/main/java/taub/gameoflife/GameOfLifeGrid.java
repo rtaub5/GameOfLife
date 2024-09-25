@@ -56,4 +56,8 @@ public class GameOfLifeGrid extends JComponent
     }
 
 
+    public int[][] getGameOfLifeBoard()
+    {
+        return game.getOrigGameBoard();
+    }
 }
