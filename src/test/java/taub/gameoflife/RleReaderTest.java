@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 public class RleReaderTest
 {
     @Test
-    public void rleReaderTest() throws IOException, URISyntaxException
+    public void readRleFile() throws IOException, URISyntaxException
     {
         //given
         Path p = Paths.get(ClassLoader.getSystemResource("glider.rle").toURI());
