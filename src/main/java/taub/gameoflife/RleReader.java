@@ -30,7 +30,7 @@ public class RleReader
             {
                 height = getHeight(line);
             } else if (line.charAt(0) != '#') {
-               // createPattern(line, height);
+                // createPattern(line, height);
                 createPattern2(line, height);
             }
             line = reader.readLine();
@@ -38,7 +38,7 @@ public class RleReader
 
     }
 
-        // This method works when the pattern is column first
+    // This method works when the pattern is column first
     private void createPattern(String line, int height)
     {
         for (int ix = 0; ix < line.length(); ix++)
@@ -60,7 +60,7 @@ public class RleReader
                 num.append(line.charAt(ix));
                 if (Character.isDigit(line.charAt(ix + 1)))
                 {
-                    num.append(line.charAt(ix+1));
+                    num.append(line.charAt(ix + 1));
                     ix = ix + 2;
                 } else {
                     ix++;
@@ -75,7 +75,6 @@ public class RleReader
                 } else if (line.charAt(ix) == 'b') {
                     for (int jx = 0; jx < Integer.parseInt(num.toString()); jx++)
                     {
-                        if (row < height)
                             row++;
                     }
                 }
@@ -84,7 +83,7 @@ public class RleReader
 
     }
 
-        // This method works when the pattern is row first
+    // This method works when the pattern is row first
     private void createPattern2(String line, int height)
     {
         for (int ix = 0; ix < line.length(); ix++)
@@ -106,7 +105,7 @@ public class RleReader
                 num.append(line.charAt(ix));
                 if (Character.isDigit(line.charAt(ix + 1)))
                 {
-                    num.append(line.charAt(ix+1));
+                    num.append(line.charAt(ix + 1));
                     ix = ix + 2;
                 } else {
                     ix++;
