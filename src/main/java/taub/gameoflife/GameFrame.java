@@ -4,11 +4,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 
 public class GameFrame extends JFrame
 {
-    int rows = 25;
+    int rows = 40;
     int cols = 53;
     GameOfLifeGrid grid = new GameOfLifeGrid(rows, cols);
     Timer timer = new Timer(1000, new ActionListener()
@@ -16,6 +19,7 @@ public class GameFrame extends JFrame
         @Override
         public void actionPerformed(ActionEvent e)
         {
+            grid.nextGeneration();
             grid.repaint();
         }
     });
@@ -35,34 +39,42 @@ public class GameFrame extends JFrame
 
         setLayout(new BorderLayout());
 
-        add(grid);
         add(buttonPanel, BorderLayout.SOUTH);
 
-        grid.changeField(18, 4);
-        grid.changeField(18, 5);
-        grid.changeField(18, 6);
-
-
-        // setup actions
-        playButton.addActionListener(new ActionListener()
+        try
         {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-                timer.start();
-            }
-        });
+            //Path p = Paths.get(ClassLoader.getSystemResource("gosperglidergun.rle").toURI());
+            // code for glider
+            Path p = Paths.get(ClassLoader.getSystemResource("glider.rle").toURI());
+            File file = p.toFile();
+            RleReader reader = new RleReader(file, grid);
+            reader.readRleFile();
 
-        stopButton.addActionListener(new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent e)
+            add(grid);
+            // setup actions
+            playButton.addActionListener(new ActionListener()
             {
-                timer.stop();
-            }
-        });
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    timer.start();
+                }
+            });
 
+            stopButton.addActionListener(new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    timer.stop();
+                }
+            });
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
 
 }
 
