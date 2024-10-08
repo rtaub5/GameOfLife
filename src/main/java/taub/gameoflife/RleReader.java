@@ -69,7 +69,7 @@ public class RleReader
     public int[][] readRleString()
     {
         String [] lines = rleContents.split("\n");
-        List<Integer>dimensions = new ArrayList <>();
+        List<Integer> dimensions = new ArrayList<>();
         for (String line : lines)
         {
             if (line.charAt(0) == 'x')
