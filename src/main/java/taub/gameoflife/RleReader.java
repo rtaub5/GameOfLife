@@ -40,17 +40,14 @@ public class RleReader
     {
         try
         {
-            if (clipboard.matches( "^(http|https)://.*$"))
+            if (clipboard.matches("^(http|https)://.*$"))
             {
                 InputStream in = new URL(clipboard).openStream();
                 rleContents = IOUtils.toString(in);
-            }
-            else if (isValidPath())
-            {
+            } else if (isValidPath()) {
                 FileInputStream fisTargetFile = new FileInputStream(new File(clipboard));
                 rleContents = IOUtils.toString(fisTargetFile, "UTF-8");
-            } else
-            {
+            } else {
                 rleContents = clipboard;
             }
         } catch (IOException e)
@@ -63,9 +60,7 @@ public class RleReader
     {
         try {
           new FileInputStream(clipboard);
-        }
-        catch(IOException e)
-        {
+        } catch (IOException e) {
             return false;
         }
         return true;
@@ -74,7 +69,7 @@ public class RleReader
     public int[][] readRleString()
     {
         String [] lines = rleContents.split("\n");
-        List<Integer>dimensions = new ArrayList<>();
+        List<Integer>dimensions = new ArrayList<> ();
         for (String line : lines)
         {
             if (line.charAt(0) == 'x')
@@ -83,7 +78,7 @@ public class RleReader
                 xRow = (100 - dimensions.get(0)) / 2;
                 yCol = (100 - dimensions.get(1)) / 2;
             } else if (line.charAt(0) != '#') {
-             //   createMockHeightFirst(line, dimensions.get(0));
+                // createMockHeightFirst(line, dimensions.get(0));
                 createMockWidthFirst(line, dimensions.get(0));
             }
         }

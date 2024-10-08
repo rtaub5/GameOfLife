@@ -1,7 +1,9 @@
 package taub.gameoflife;
 
 import javax.swing.*;
+import javax.tools.Tool;
 import java.awt.*;
+import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.event.ActionEvent;
@@ -72,13 +74,13 @@ public class GameFrame extends JFrame
             {
                 try
                 {
-                    String clipboard = (String)Toolkit.getDefaultToolkit().getSystemClipboard().getData(DataFlavor.stringFlavor);
+                    Toolkit toolkit = Toolkit.getDefaultToolkit();
+                    String clipboard = (String) toolkit.getSystemClipboard().getData(DataFlavor.stringFlavor);
                     RleReader reader = new RleReader(clipboard);
                    int [][] mock = reader.readRleString();
                     grid.regenerateBoard(mock);
                     grid.repaint();
-                } catch (UnsupportedFlavorException ex)
-                {
+                } catch (UnsupportedFlavorException ex) {
                     throw new RuntimeException(ex);
                 } catch (IOException ex)
                 {
