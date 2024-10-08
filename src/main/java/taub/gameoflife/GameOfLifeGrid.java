@@ -12,6 +12,11 @@ public class GameOfLifeGrid extends JComponent
         game = new GameOfLife(rows, cols);
     }
 
+    public GameOfLifeGrid(int[][] matrix)
+    {
+        game = new GameOfLife(matrix);
+    }
+
     @Override
     public void paintComponent(Graphics g)
     {
@@ -20,12 +25,12 @@ public class GameOfLifeGrid extends JComponent
         Color darkMagenta = new Color(255, 0, 255, 200);
 
         g2.setStroke(new BasicStroke(2));
-        int unitMeasure = 25;
-        int startY = 55;
+        int unitMeasure = 6;
+        int startY = 20;
 
         for (int row = 0; row < game.getRows() * unitMeasure; row = row + unitMeasure)
         {
-            int startX = 65;
+            int startX = 30;
             for (int column = 0; column < game.getColumns(); column++)
             {
 
@@ -36,17 +41,21 @@ public class GameOfLifeGrid extends JComponent
                     g2.setColor(lightMagenta);
                 }
                 g2.fillRect(startX, startY, unitMeasure, unitMeasure);
-                startX = startX + 25;
+                startX = startX + unitMeasure;
             }
              startY = startY + unitMeasure;
         }
-
     }
 
 
     public void changeField(int row, int col)
     {
         game.setOrigBoardFieldLive(row, col);
+    }
+
+    public void regenerateBoard(int [][] mock)
+    {
+        game.regenerateBoard(mock);
     }
 
 

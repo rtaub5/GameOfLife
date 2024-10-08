@@ -2,18 +2,19 @@ package taub.gameoflife;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.IOException;
+
 
 
 public class GameFrame extends JFrame
 {
-    int rows = 40;
-    int cols = 53;
-    GameOfLifeGrid grid = new GameOfLifeGrid(rows, cols);
+
+    GameOfLifeGrid grid;
+
     Timer timer = new Timer(1000, new ActionListener()
     {
         @Override
@@ -26,55 +27,69 @@ public class GameFrame extends JFrame
 
     public GameFrame()
     {
-        setSize(80, 400);
+        setSize(700, 1500);
         setTitle("Board");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         JPanel buttonPanel = new JPanel();
         JButton playButton = new JButton("Play");
         JButton stopButton = new JButton("Stop");
+        JButton pasteButton = new JButton("Paste");
         buttonPanel.add(playButton);
         buttonPanel.add(stopButton);
+        buttonPanel.add(pasteButton);
         playButton.setPreferredSize(new Dimension(100, 100));
         stopButton.setPreferredSize(new Dimension(100, 100));
+        pasteButton.setPreferredSize(new Dimension(100, 100));
 
         setLayout(new BorderLayout());
 
         add(buttonPanel, BorderLayout.SOUTH);
+        grid = new GameOfLifeGrid(100, 100);
+        add(grid);
 
-        try
+        playButton.addActionListener(new ActionListener()
         {
-            //Path p = Paths.get(ClassLoader.getSystemResource("gosperglidergun.rle").toURI());
-            // code for glider
-            Path p = Paths.get(ClassLoader.getSystemResource("glider.rle").toURI());
-            File file = p.toFile();
-            RleReader reader = new RleReader(file, grid);
-            reader.readRleFile();
-
-            add(grid);
-            // setup actions
-            playButton.addActionListener(new ActionListener()
+            @Override
+            public void actionPerformed(ActionEvent e)
             {
-                @Override
-                public void actionPerformed(ActionEvent e)
-                {
-                    timer.start();
-                }
-            });
+                timer.start();
+            }
+        });
 
-            stopButton.addActionListener(new ActionListener()
+        stopButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
             {
-                @Override
-                public void actionPerformed(ActionEvent e)
-                {
-                    timer.stop();
-                }
-            });
+                timer.stop();
+            }
+        });
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        pasteButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                try
+                {
+                    String clipboard = (String)Toolkit.getDefaultToolkit().getSystemClipboard().getData(DataFlavor.stringFlavor);
+                    RleReader reader = new RleReader(clipboard);
+                   int [][] mock = reader.readRleString();
+                    grid.regenerateBoard(mock);
+                    grid.repaint();
+                } catch (UnsupportedFlavorException ex)
+                {
+                    throw new RuntimeException(ex);
+                } catch (IOException ex)
+                {
+                    throw new RuntimeException(ex);
+                }
+
+
+            }
+        });
+
     }
-
 
 }
 
