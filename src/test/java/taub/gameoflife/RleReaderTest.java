@@ -31,6 +31,6 @@ public class RleReaderTest
                 {0, 1, 1, 1}};
 
         assertArrayEquals(expectedBoard, grid.getGameOfLifeBoard());
-
     }
+
 }

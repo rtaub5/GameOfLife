@@ -23,6 +23,14 @@ public class GameOfLife
         setNewGameBoard();
     }
 
+    public void regenerateBoard(int [][] mock)
+    {
+        origGameBoard = mock;
+        setNewGameBoard();
+    }
+
+
+
     public int getRows()
     {
         return rows;
@@ -46,7 +54,7 @@ public class GameOfLife
          newGameBoard[row][col] = 1;
     }
 
-    private void setNewGameBoard()
+    public void setNewGameBoard()
     {
         newGameBoard = new int[origGameBoard.length][origGameBoard[0].length];
         for (int i = 0; i < origGameBoard.length; i++)
