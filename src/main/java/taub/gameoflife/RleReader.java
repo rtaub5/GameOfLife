@@ -14,13 +14,16 @@ public class RleReader
 {
     private File file;
     private BufferedReader reader;
-    private GameOfLifeGrid grid;
+    private GameOfLifeComponent grid;
     private int row = 1;
     private int col = 1;
     private String clipboard;
     private String rleContents;
     private int xRow = 0;
     private int yCol = 0;
+
+
+
     private int [][] mock = new int [100][100];
 
     public RleReader(String clip)
@@ -28,13 +31,29 @@ public class RleReader
         clipboard = clip;
         readClipboard();
     }
+    public RleReader()
+    {
 
-    public RleReader(File file, GameOfLifeGrid grid) throws FileNotFoundException
+    }
+
+    public RleReader(File file, GameOfLifeComponent grid) throws FileNotFoundException
     {
         this.file = file;
         reader = new BufferedReader(new FileReader(file));
         this.grid = grid;
     }
+    public void readClipboard(String clip)
+    {
+        clipboard = clip;
+        readClipboard();
+        readRleString();
+    }
+
+    public int[][] getMock()
+    {
+        return mock;
+    }
+
 
     private void readClipboard()
     {

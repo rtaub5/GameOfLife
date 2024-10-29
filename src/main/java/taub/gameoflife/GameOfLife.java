@@ -48,11 +48,13 @@ public class GameOfLife
 
 
 
-    public void setOrigBoardFieldLive(int row, int col)
+
+    public void setOrigBoardField(int row, int col, int on)
     {
-         origGameBoard[row][col] = 1;
-         newGameBoard[row][col] = 1;
+        origGameBoard[row][col] = on;
+        newGameBoard[row][col] = on;
     }
+    
 
     public void setNewGameBoard()
     {
@@ -121,5 +123,6 @@ public class GameOfLife
         }
         return sb.toString();
     }
+
 
 }

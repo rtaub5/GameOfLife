@@ -1,13 +1,10 @@
 package taub.gameoflife;
 
 import javax.swing.*;
-import javax.tools.Tool;
 import java.awt.*;
-import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.UnsupportedFlavorException;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.io.IOException;
 
 
@@ -15,7 +12,7 @@ import java.io.IOException;
 public class GameFrame extends JFrame
 {
 
-    GameOfLifeGrid grid;
+    GameOfLifeComponent grid;
 
     Timer timer = new Timer(1000, new ActionListener()
     {
@@ -46,8 +43,23 @@ public class GameFrame extends JFrame
         setLayout(new BorderLayout());
 
         add(buttonPanel, BorderLayout.SOUTH);
-        grid = new GameOfLifeGrid(100, 100);
+        grid = new GameOfLifeComponent(100, 100);
         add(grid);
+        RleReader reader = new RleReader();
+        GameOfLifeController controller = new GameOfLifeController(grid.getGame(), grid, reader);
+        addMouseListener(new MouseAdapter()
+        {
+            @Override
+            public void mouseClicked(MouseEvent e)
+            {
+                int x = e.getX();
+                int y = e.getY();
+                controller.toggleCell(x, y);
+            }
+        });
+
+
+
 
         playButton.addActionListener(new ActionListener()
         {
@@ -72,20 +84,33 @@ public class GameFrame extends JFrame
             @Override
             public void actionPerformed(ActionEvent e)
             {
+//                try
+//                {
+//                    Toolkit toolkit = Toolkit.getDefaultToolkit();
+//                    String clipboard = (String) toolkit.getSystemClipboard().getData(DataFlavor.stringFlavor);
+//                    RleReader reader = new RleReader(clipboard);
+//                   int [][] mock = reader.readRleString();
+//                    grid.regenerateBoard(mock);
+//                    grid.repaint();
+//                } catch (UnsupportedFlavorException ex) {
+//                    throw new RuntimeException(ex);
+//                } catch (IOException ex)
+//                {
+//                    throw new RuntimeException(ex);
+//                }
+                 Toolkit toolkit = Toolkit.getDefaultToolkit();
                 try
                 {
-                    Toolkit toolkit = Toolkit.getDefaultToolkit();
                     String clipboard = (String) toolkit.getSystemClipboard().getData(DataFlavor.stringFlavor);
-                    RleReader reader = new RleReader(clipboard);
-                   int [][] mock = reader.readRleString();
-                    grid.regenerateBoard(mock);
-                    grid.repaint();
-                } catch (UnsupportedFlavorException ex) {
+                    controller.paste(clipboard);
+                } catch (UnsupportedFlavorException ex)
+                {
                     throw new RuntimeException(ex);
                 } catch (IOException ex)
                 {
                     throw new RuntimeException(ex);
                 }
+
 
 
             }
