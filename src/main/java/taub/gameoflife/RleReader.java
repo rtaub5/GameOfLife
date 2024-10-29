@@ -21,9 +21,6 @@ public class RleReader
     private String rleContents;
     private int xRow = 0;
     private int yCol = 0;
-
-
-
     private int [][] mock = new int [100][100];
 
     public RleReader(String clip)

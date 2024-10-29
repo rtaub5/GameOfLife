@@ -28,7 +28,7 @@ private static String glider_Str = """
         doReturn(100).when(model).getRows();
 
         //when
-         controller.toggleCell(50, 100);
+        controller.toggleCell(50, 100);
 
         //then
         verify(model).setOrigBoardField(5, 10, 1); // method wont return anything instead
@@ -74,24 +74,24 @@ private static String glider_Str = """
         verify(view).repaint();
     }
 
-// probably won't pass on github
-//  @Test
-//   public void pasteFile()
-//   {
-//        //given
-//        GameOfLife model = mock();
-//        GameOfLifeComponent view = mock();
-//        GameOfLifeController controller = new GameOfLifeController(model, view);
-//        String File = "glider.rle";
-//        String rle = "";
-//
-//        //when
-//        controller.paste(rle);
-//
-//        //when
-//        verify(model).loadrle(glider_Str.replace("\n", "\r\n"));
-//        verify(view).repaint();
-  //  }
+    // probably won't pass on github
+    //  @Test
+    //   public void pasteFile()
+    //   {
+    //        //given
+    //        GameOfLife model = mock();
+    //        GameOfLifeComponent view = mock();
+    //        GameOfLifeController controller = new GameOfLifeController(model, view);
+    //        String File = "glider.rle";
+    //        String rle = "";
+    //
+    //        //when
+    //        controller.paste(rle);
+    //
+    //        //when
+    //        verify(model).loadrle(glider_Str.replace("\n", "\r\n"));
+    //        verify(view).repaint();
+    //  }
 }
 
 
