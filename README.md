@@ -17,9 +17,11 @@ Otherwise, the cell dies.
 This app is only a sample of Conway's Game of Life, 
 and only shows what happens if a user where to pick this
 specific pattern of live cells. <br/>
-For this app, just press play to generate 
+For this app, first press paste to paste the contents of your computer's clipboard.
+Then press play to generate 
 the next round of live cells.
 
-![GameOfLife](GridWithoutLines.png)
+![GameOfLife](GameofLifeBeforePaste.png)
+![GameOfLife](GameofLifeAfterPaste.png)
 
 

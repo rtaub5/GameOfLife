@@ -18,7 +18,7 @@ public class RleReaderTest
         //given
         Path p = Paths.get(ClassLoader.getSystemResource("glider.rle").toURI());
         File file = p.toFile();
-        GameOfLifeGrid grid = new GameOfLifeGrid(4, 4);
+        GameOfLifeComponent grid = new GameOfLifeComponent(4, 4);
         RleReader reader = new RleReader(file, grid);
 
         //when
@@ -31,6 +31,6 @@ public class RleReaderTest
                 {0, 1, 1, 1}};
 
         assertArrayEquals(expectedBoard, grid.getGameOfLifeBoard());
-
     }
+
 }
