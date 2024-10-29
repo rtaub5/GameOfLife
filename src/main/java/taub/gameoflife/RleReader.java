@@ -31,6 +31,7 @@ public class RleReader
         clipboard = clip;
         readClipboard();
     }
+
     public RleReader()
     {
 
@@ -42,18 +43,18 @@ public class RleReader
         reader = new BufferedReader(new FileReader(file));
         this.grid = grid;
     }
-    public void readClipboard(String clip)
-    {
-        clipboard = clip;
-        readClipboard();
-        readRleString();
-    }
 
     public int[][] getMock()
     {
         return mock;
     }
 
+    public void readClipboard(String clip)
+    {
+        clipboard = clip;
+        readClipboard();
+        readRleString();
+    }
 
     private void readClipboard()
     {

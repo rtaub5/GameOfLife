@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.*;
 
 
-public class GameOfLIfeControllerTest
+public class GameOfLifeControllerTest
 {
 private static String glider_Str = """
         #N Glider
@@ -15,6 +15,7 @@ private static String glider_Str = """
         x = 3, y = 3, rule = B3/S23
         bob$2bo$3o!
         """.trim().replace("\n", "\r\n");
+
     @Test
     void toggleCell()
     {
@@ -24,7 +25,7 @@ private static String glider_Str = """
         RleReader reader = mock();
         GameOfLifeController controller = new GameOfLifeController(model, view, reader);
         doReturn(100).when(model).getRows();
-        doReturn(100).when(model).getRows(); // used to return
+        doReturn(100).when(model).getRows();
 
         //when
          controller.toggleCell(50, 100);
@@ -73,10 +74,10 @@ private static String glider_Str = """
         verify(view).repaint();
     }
 
-    // probably won't pass on github
-  //  @Test
- //   public void pasteFile()
- //   {
+// probably won't pass on github
+//  @Test
+//   public void pasteFile()
+//   {
 //        //given
 //        GameOfLife model = mock();
 //        GameOfLifeComponent view = mock();

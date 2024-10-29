@@ -14,6 +14,7 @@ public class GameOfLifeController
         this.view = view;
         this.reader = reader;
     }
+
     public void startTimer()
     {
 

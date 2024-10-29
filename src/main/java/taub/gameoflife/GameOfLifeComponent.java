@@ -86,10 +86,12 @@ public class GameOfLifeComponent extends JComponent
         startY = 20;
         int row = (y - startY) / unitMeasure;
         int col = (x - startX) / unitMeasure;
-         if (mock[row][col] == 0)
-            game.setOrigBoardField(row, col, 1);
-        else
-            game.setOrigBoardField(row, col, 0);
+        if (mock[row][col] == 0)
+        {
+             game.setOrigBoardField(row, col, 1);
+        } else {
+             game.setOrigBoardField(row, col, 0);
+        }
         repaint();
     }
 }
